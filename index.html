@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>مجعد لتركيب الأبواب</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:#fff;font-family:Arial,sans-serif}
+header{background:#17243a;padding:25px 16px;text-align:center}
+header h1{color:#f5b942;margin:5px}
+header p{color:#ccd5e3}
+main{padding:15px;max-width:700px;margin:auto}
+.card{background:#1d2b42;padding:17px;margin:14px 0;border-radius:14px}
+h2{font-size:20px;color:#f5b942}
+button,.btn{background:#e6a934;color:#172033;border:0;padding:13px;border-radius:9px;font-weight:bold;cursor:pointer;width:100%;margin-top:10px;font-size:16px}
+select,input{width:100%;padding:13px;border-radius:8px;margin-top:10px;font-size:16px}
+p{line-height:1.8}
+.small{color:#b9c7d9;font-size:14px}
+.step{background:#263851;padding:12px;border-radius:9px;margin:9px 0}
+img{max-width:100%;border-radius:12px;margin-top:12px}
+a{color:#f5c65c}
+footer{text-align:center;color:#aab6c7;padding:25px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🔧 مجعد لتركيب الأبواب</h1>
+<p>تعلم تركيب جميع أنواع الأبواب خطوة بخطوة</p>
+<p>Învățarea montării tuturor tipurilor de uși</p>
+</header>
+
+<main>
+
+<div class="card">
+<h2>🚪 اختر نوع الباب</h2>
+<select id="door" onchange="showDoor()">
+<option value="armored">الباب المصفح - Ușă blindată</option>
+<option value="wood">الباب الخشبي - Ușă din lemn</option>
+<option value="metal">الباب المعدني - Ușă metalică</option>
+<option value="interior">باب الغرف - Ușă de interior</option>
+<option value="sliding">الباب الجرار - Ușă glisantă</option>
+<option value="glass">الباب الزجاجي - Ușă din sticlă</option>
+<option value="fire">باب مقاوم للحريق - Ușă antifoc</option>
+<option value="pvc">باب PVC - Ușă PVC</option>
+</select>
+<div id="doorInfo"></div>
+<button onclick="videos()">▶ شاهد فيديوهات التركيب</button>
+</div>
+
+<div class="card">
+<h2>📸 افحص صورة الباب</h2>
+<p>اختر صورة الباب من هاتفك لعرضها وتحديد نوعها.</p>
+<input type="file" accept="image/*" capture="environment" onchange="preview(event)">
+<img id="preview" style="display:none">
+<p id="photoInfo" class="small"></p>
+<p class="small">ملاحظة: التحليل الذكي التلقائي للصور يحتاج إلى ربط خدمة ذكاء اصطناعي في مرحلة لاحقة.</p>
+</div>
+
+<div class="card">
+<h2>🛠️ الأدوات المطلوبة</h2>
+<div id="tools"></div>
+</div>
+
+<div class="card">
+<h2>📐 مراحل تركيب الباب</h2>
+<div id="steps"></div>
+</div>
+
+<div class="card">
+<h2>🇷🇴 قاموس المصطلحات الرومانية</h2>
+<p>الباب = Ușă</p>
+<p>الإطار = Toc</p>
+<p>المفصلات = Balamale</p>
+<p>القفل = Broască</p>
+<p>المقبض = Mâner</p>
+<p>المسامير = Șuruburi</p>
+<p>ميزان الماء = Nivelă</p>
+<p>المثقاب = Bormașină</p>
+<p>الفوم = Spumă poliuretanică</p>
+<p>المتر = Ruletă</p>
+<p>المطرقة = Ciocan</p>
+<p>المفك = Șurubelniță</p>
+</div>
+
+<div class="card">
+<h2>📋 تسجيل مشروع جديد</h2>
+<input id="project" placeholder="اسم المشروع">
+<input id="address" placeholder="عنوان العمل">
+<input id="notes" placeholder="ملاحظات العمل">
+<button onclick="saveProject()">حفظ المشروع</button>
+<div id="saved"></div>
+</div>
+
+</main>
+
+<footer>
+مجعد لتركيب الأبواب<br>
+Maged - Montaj uși<br>
+جميع الحقوق محفوظة © 2026
+</footer>
+
+<script>
+const data={
+armored:{
+name:"الباب المصفح",
+tools:"ميزان ماء، مثقاب، شاكوش، مفتاح ربط، فوم، مسامير تثبيت، متر.",
+steps:["قياس فتحة الباب والتأكد من المقاسات.","تجهيز الفتحة وتنظيفها.","وضع الإطار (Toc) وضبط استقامته.","تثبيت الإطار حسب تعليمات الشركة.","تركيب ضلفة الباب والمفصلات.","تركيب وضبط القفل والمقبض.","اختبار الفتح والإغلاق والتأكد من الأمان."]
+},
+wood:{
+name:"الباب الخشبي",
+tools:"منشار، متر، ميزان ماء، مفك، مفصلات، مسامير.",
+steps:["قياس الفتحة.","تجهيز الإطار الخشبي.","ضبط الإطار وتثبيته.","تركيب المفصلات.","تركيب ضلفة الباب.","تركيب المقبض والقفل.","اختبار حركة الباب."]
+},
+metal:{
+name:"الباب المعدني",
+tools:"مثقاب، ميزان، مفتاح ربط، مسامير تثبيت، متر.",
+steps:["قياس الفتحة.","تجهيز الإطار المعدني.","ضبط الإطار رأسياً وأفقياً.","تثبيت الإطار.","تركيب ضلفة الباب.","ضبط المفصلات والقفل.","اختبار الباب."]
+},
+interior:{
+name:"باب الغرف",
+tools:"متر، ميزان، مفك، شاكوش، مفصلات، مسامير.",
+steps:["قياس فتحة الباب.","تجهيز الحلق.","ضبط الحلق وتثبيته.","تركيب المفصلات.","تعليق الباب.","تركيب المقبض.","التأكد من الإغلاق."]
+},
+sliding:{
+name:"الباب الجرار",
+tools:"مثقاب، متر، ميزان، سكة انزلاق، بكرات.",
+steps:["قياس الفتحة.","تحديد مكان السكة.","تثبيت السكة حسب تعليمات الشركة.","تركيب البكرات.","تعليق ضلفة الباب.","ضبط الحركة والمصدات.","اختبار الانزلاق."]
+},
+glass:{
+name:"الباب الزجاجي",
+tools:"ميزان، متر، أدوات تثبيت مخصصة للزجاج، جوانات.",
+steps:["قياس الفتحة بدقة.","التأكد من أن الزجاج مخصص للأبواب.","تجهيز الحوامل المناسبة.","تثبيت الزجاج وفق تعليمات الشركة.","تركيب المفصلات والمقبض.","اختبار الحركة والأمان."]
+},
+fire:{
+name:"الباب المقاوم للحريق",
+tools:"ميزان، مثقاب، مسامير معتمدة، أدوات ضبط المفصلات.",
+steps:["التحقق من شهادة الباب ومكوناته.","فحص الفتحة والمقاسات.","تركيب الإطار المعتمد.","تثبيت الباب حسب تعليمات المصنع.","تركيب الجوانات ومكونات الإغلاق.","اختبار الغلق الذاتي.","توثيق التركيب والتأكد من مطابقة المواصفات."]
+},
+pvc:{
+name:"باب PVC",
+tools:"متر، ميزان، مثقاب، مفك، مسامير تثبيت، فوم مناسب.",
+steps:["قياس الفتحة.","تجهيز الإطار.","ضبط الإطار بالميزان.","تثبيت الإطار.","تركيب ضلفة الباب.","ضبط المفصلات والقفل.","اختبار الفتح والإغلاق."]
+}
+};
+
+function showDoor(){
+let d=data[document.getElementById("door").value];
+document.getElementById("doorInfo").innerHTML=
+"<h3>"+d.name+"</h3><p>"+d.steps.length+" مراحل للتركيب</p>";
+document.getElementById("tools").innerHTML=d.tools;
+document.getElementById("steps").innerHTML=d.steps.map((s,i)=>
+'<div class="step">'+(i+1)+'️⃣ '+s+'</div>').join('');
+}
+
+function videos(){
+let d=data[document.getElementById("door").value];
+let q=encodeURIComponent("شرح تركيب "+d.name+" خطوة بخطوة");
+window.open("https://www.youtube.com/results?search_query="+q,"_blank");
+}
+
+function preview(e){
+let f=e.target.files[0];
+if(!f)return;
+let r=new FileReader();
+r.onload=function(){
+document.getElementById("preview").src=r.result;
+document.getElementById("preview").style.display="block";
+document.getElementById("photoInfo").innerText="تم اختيار الصورة: "+f.name;
+};
+r.readAsDataURL(f);
+}
+
+function saveProject(){
+let p=document.getElementById("project").value;
+let a=document.getElementById("address").value;
+let n=document.getElementById("notes").value;
+if(!p){alert("اكتب اسم المشروع");return;}
+let list=JSON.parse(localStorage.getItem("magedProjects")||"[]");
+list.push({p,a,n,date:new Date().toLocaleDateString()});
+localStorage.setItem("magedProjects",JSON.stringify(list));
+document.getElementById("saved").innerText="تم حفظ المشروع بنجاح ✓";
+}
+
+showDoor();
+</script>
+</body>
+</html>
