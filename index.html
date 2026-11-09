@@ -3,6 +3,114 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#142b45">
+<title>مجعد لتركيب الأبواب</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f4f8;color:#17283d}
+header{background:#142b45;color:white;padding:25px 15px;text-align:center}
+header h1{margin:5px;font-size:25px}
+header p{color:#d4e4f5}
+main{padding:15px;max-width:650px;margin:auto}
+.card{background:white;border-radius:14px;padding:17px;margin:13px 0;box-shadow:0 2px 9px #0001}
+h2{font-size:19px;color:#173e63}
+button{background:#1769aa;color:white;border:0;border-radius:9px;padding:12px;margin:5px;cursor:pointer;font-size:15px}
+input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+.result{background:#e8f2fc;padding:12px;border-radius:9px;line-height:1.8}
+a{color:#1769aa}
+footer{text-align:center;padding:20px;color:#667}
+</style>
+</head>
+<body>
+<header>
+<h1>🔧 مجعد لتركيب الأبواب</h1>
+<p>تعلم تركيب جميع أنواع الأبواب</p>
+<p>تعليم بالعربية والترجمة الرومانية</p>
+</header>
+<main>
+<div class="card">
+<h2>🔍 تحديد نوع الباب</h2>
+<p>اختر صورة الباب لمعرفة نوعه والبحث عن طريقة تركيبه.</p>
+<input type="file" id="photo" accept="image/*" capture="environment">
+<div id="preview"></div>
+<button onclick="identify()">فحص الصورة</button>
+<div id="result"></div>
+</div>
+
+<div class="card">
+<h2>🚪 أنواع الأبواب</h2>
+<select id="door">
+<option value="مصفح">باب مصفح - Ușă metalică blindată</option>
+<option value="خشبي">باب خشبي - Ușă din lemn</option>
+<option value="ألمنيوم">باب ألمنيوم - Ușă din aluminiu</option>
+<option value="زجاجي">باب زجاجي - Ușă din sticlă</option>
+<option value="سحاب">باب سحاب - Ușă culisantă</option>
+<option value="داخلي">باب داخلي - Ușă interioară</option>
+</select>
+<button onclick="showGuide()">شرح التركيب</button>
+<div id="guide"></div>
+</div>
+
+<div class="card">
+<h2>🎥 فيديوهات تعليمية</h2>
+<p>افتح فيديوهات شرح تركيب الأبواب.</p>
+<button onclick="videos()">مشاهدة الفيديوهات</button>
+</div>
+
+<div class="card">
+<h2>📏 أدوات ومقاسات التركيب</h2>
+<p>المتر - الميزان - الشنيور - مفك - فوم - مسامير تثبيت.</p>
+<p>تأكد من قياس الفتحة والارتفاع والعرض قبل التركيب.</p>
+</div>
+
+<div class="card">
+<h2>🇷🇴 قاموس عربي روماني</h2>
+<p>الباب: Ușă</p>
+<p>الإطار: Toc</p>
+<p>المفصلات: Balamale</p>
+<p>القفل: Broască</p>
+<p>المقبض: Mâner</p>
+<p>الميزان: Nivelă</p>
+<p>المسامير: Șuruburi</p>
+<p>الفوم: Spumă</p>
+</div>
+
+<div class="card">
+<h2>📞 تواصل معنا</h2>
+<p>مجعد لتركيب الأبواب</p>
+<p>الهاتف: 0774544176</p>
+</div>
+</main>
+<footer>جميع الحقوق محفوظة © مجعد لتركيب الأبواب</footer>
+<script>
+const photo=document.getElementById('photo');
+photo.onchange=()=>{
+let f=photo.files[0];
+if(f){
+document.getElementById('preview').innerHTML='<img style="width:100%;border-radius:10px" src="'+URL.createObjectURL(f)+'">';
+document.getElementById('result').innerHTML='<div class="result">تم تحميل الصورة. لتحديد النوع بدقة، اعرضها على خبير أو استخدم مساعد الذكاء الاصطناعي.</div>';
+}
+};
+function identify(){
+if(!photo.files.length){alert('اختر صورة الباب أولاً');return;}
+document.getElementById('result').innerHTML='<div class="result">الصورة جاهزة للفحص. هذه النسخة لا تحتوي بعد على محرك ذكاء اصطناعي لتحليل الصور.</div>';
+}
+function showGuide(){
+let d=document.getElementById('door').value;
+document.getElementById('guide').innerHTML='<div class="result"><b>طريقة تركيب الباب '+d+'</b><ol><li>قياس فتحة الباب والتأكد من استقامتها.</li><li>تجهيز الإطار وضبطه بالميزان.</li><li>تثبيت الإطار حسب تعليمات الشركة.</li><li>تركيب الضلفة والمفصلات.</li><li>ضبط القفل والمقبض.</li><li>اختبار الفتح والغلق والتأكد من الأمان.</li></ol>لا تعتمد على هذه الخطوات وحدها؛ اتبع دليل الشركة المصنعة.</div>';
+}
+function videos(){
+window.open('https://www.youtube.com/results?search_query=شرح+تركيب+الأبواب+المصفحة','_blank');
+}
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#101827">
 <title>مجعد لتركيب الأبواب</title>
