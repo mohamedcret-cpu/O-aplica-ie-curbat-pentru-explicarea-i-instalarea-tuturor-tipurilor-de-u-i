@@ -295,5 +295,78 @@ document.getElementById("saved").innerText="تم حفظ المشروع بنجا�
 
 showDoor();
 </script>
-</body>
+</body><section class="card">
+<h2>🚪 دليل تركيب الأبواب الاحترافي</h2>
+
+<input id="doorSearch"
+placeholder="ابحث عن نوع الباب..."
+oninput="searchDoors()">
+
+<div id="doorResults">
+
+<div class="card">
+<h3>🚪 الأبواب المصفحة للشقق</h3>
+<p>الأدوات: ميزان، شنيور، مفكات، فوم، مسامير.</p>
+<p>الخطوات:</p>
+<ol>
+<li>قياس فتحة الباب.</li>
+<li>تجهيز الحلق.</li>
+<li>ضبط الحلق بالميزان.</li>
+<li>تثبيت الحلق حسب تعليمات المصنع.</li>
+<li>تركيب ضلفة الباب.</li>
+<li>تركيب المفصلات والمقبض.</li>
+<li>اختبار القفل والإغلاق.</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>🚪 الأبواب المنزلقة</h3>
+<p>الأدوات: ميزان، متر، مثقاب، سكة، بكرات.</p>
+<ol>
+<li>قياس الفتحة.</li>
+<li>تحديد مكان السكة.</li>
+<li>تثبيت السكة.</li>
+<li>تركيب البكرات.</li>
+<li>تعليق الباب.</li>
+<li>ضبط الحركة والنهايات.</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>🚪 الأبواب الزجاجية</h3>
+<p>الأدوات: ميزان، أدوات رفع زجاج، جوانات.</p>
+<ol>
+<li>قياس الفتحة بدقة.</li>
+<li>التأكد من نوع الزجاج المناسب.</li>
+<li>تجهيز الحوامل.</li>
+<li>تركيب الزجاج بواسطة فني مختص.</li>
+<li>تركيب المفصلات والمقبض.</li>
+<li>اختبار الحركة والأمان.</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>🔥 أبواب مقاومة الحريق</h3>
+<p>الأدوات: ميزان، مسامير معتمدة، أدوات ضبط المفصلات.</p>
+<ol>
+<li>فحص شهادة الباب ومكوناته.</li>
+<li>فحص الفتحة والمقاسات.</li>
+<li>تركيب الإطار المعتمد.</li>
+<li>تثبيت الباب حسب تعليمات المصنع.</li>
+<li>تركيب الجوانات ومكونات الإغلاق.</li>
+<li>اختبار الغلق الذاتي.</li>
+</ol>
+</div>
+
+</div>
+</section>
+
+<script>
+function searchDoors(){
+let q=document.getElementById("doorSearch").value.toLowerCase();
+document.querySelectorAll("#doorResults .card").forEach(card=>{
+card.style.display=card.innerText.toLowerCase().includes(q)?"block":"none";
+});
+}
+</script>
 </html>
